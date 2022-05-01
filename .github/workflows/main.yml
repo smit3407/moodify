@@ -18,5 +18,7 @@ jobs:
         echo REACT_APP_CLIENT_ID=${{ secrets.REACT_APP_CLIENT_ID }} >> .env
         echo REACT_APP_AUTHORIZE_URL=${{ secrets.REACT_APP_AUTHORIZE_URL }} >> .env
         echo REACT_APP_REDIRECT_URL=${{ secrets.REACT_APP_REDIRECT_URL }} >> .env
-        npm run build
-        npm run deploy
+      run: npm run build
+        working-directory: /moodify-client
+      run: npm run deploy
+        working-directory: /moodify-client
