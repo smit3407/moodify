@@ -55,7 +55,7 @@ function Submood() {
   console.log(submoods);
 
   React.useEffect(() => {
-    axios.get(`http://localhost:5000/user/${accessToken}`)
+    axios.get(`https://smit3407-moodify-server.herokuapp.com/user/${accessToken}`)
       .then((data) => {
         console.log(data);
       })

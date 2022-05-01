@@ -54,7 +54,7 @@ function SuggestSong() {
 
   const getResults = async () => {
     console.log(songTitle);
-    await axios.get(`http://localhost:5000/song/search?term=${songTitle}&type=track&token=${accessToken}`)
+    await axios.get(`https://smit3407-moodify-server.herokuapp.com/song/search?term=${songTitle}&type=track&token=${accessToken}`)
       .then((data) => {
         console.log(data);
 
@@ -114,9 +114,9 @@ function SuggestSong() {
     };
     console.log(song);
 
-    axios.post(`http://localhost:5000/song/post/?mood=${mood}&af1=${submood1}&af2=${submood2}&af3=${submood3}&af4=${submood4}&af5=${submood5}&adminRec=false`, song)
+    axios.post(`https://smit3407-moodify-server.herokuapp.com/song/post/?mood=${mood}&af1=${submood1}&af2=${submood2}&af3=${submood3}&af4=${submood4}&af5=${submood5}&adminRec=false`, song)
       .then(() => {
-        axios.put(`http://localhost:5000/user/recommended?userId=${userID}&songId=${song.songId}`)
+        axios.put(`https://smit3407-moodify-server.herokuapp.com/user/recommended?userId=${userID}&songId=${song.songId}`)
           .then((data) => {
             console.log(data);
             setAddSongAlert(true);
@@ -124,7 +124,7 @@ function SuggestSong() {
             console.log(err);
             setAddSongFailAlert(true);
           });
-        axios.post(`http://localhost:5000/user/update/mood?type=${mood}&token=${accessToken}`)
+        axios.post(`https://smit3407-moodify-server.herokuapp.com/user/update/mood?type=${mood}&token=${accessToken}`)
           .then(() => {
             console.log('user mood added or updated');
           }).catch((err) => {
@@ -137,7 +137,7 @@ function SuggestSong() {
   };
 
   React.useEffect(() => {
-    axios.get(`http://localhost:5000/user/${accessToken}`)
+    axios.get(`https://smit3407-moodify-server.herokuapp.com/user/${accessToken}`)
       .then((data) => {
         setUserID(data.data.id);
       })

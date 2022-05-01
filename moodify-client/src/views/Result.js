@@ -290,7 +290,7 @@ function Result() {
 
         console.log(`csvSong: ${csvSong}`);
 
-        link = await axios.post(`http://localhost:5000/playlist/create?token=${accessToken}&name=${name}&ids=${csvSong}`, { imgLink }).then((data) => {
+        link = await axios.post(`https://smit3407-moodify-server.herokuapp.com/playlist/create?token=${accessToken}&name=${name}&ids=${csvSong}`, { imgLink }).then((data) => {
           if (data.data !== 'Failed') return data.data;
           console.log('failed');
           return undefined;
@@ -312,7 +312,7 @@ function Result() {
         const playlistId = playlistLink.substring(34);
         console.log(playlistId);
         console.log(songIds);
-        const item = await axios.delete(`http://localhost:5000/playlist/delete?playlistId=${playlistId}&songIds=${songIds}&token=${accessToken}`);
+        const item = await axios.delete(`https://smit3407-moodify-server.herokuapp.com/playlist/delete?playlistId=${playlistId}&songIds=${songIds}&token=${accessToken}`);
         console.log(item.data);
         setHeartFill(false);
         setHeartButton('/heart-white.png');
@@ -343,7 +343,7 @@ function Result() {
 
         setSongIds(csvSong);
 
-        link = await axios.post(`http://localhost:5000/playlist/create?token=${accessToken}&name=${name}&ids=${csvSong}&`).then((data) => {
+        link = await axios.post(`https://smit3407-moodify-server.herokuapp.com/playlist/create?token=${accessToken}&name=${name}&ids=${csvSong}&`).then((data) => {
           if (data.data !== 'Failed') return data.data;
           return undefined;
         });
@@ -471,7 +471,7 @@ function Result() {
 
   React.useEffect(async () => {
     try {
-      const userData = await axios.get(`http://localhost:5000/user/${accessToken}`);
+      const userData = await axios.get(`https://smit3407-moodify-server.herokuapp.com/user/${accessToken}`);
 
       const associatedFeels = [];
       if (submood1 && submood1 !== '') {
@@ -490,13 +490,13 @@ function Result() {
         associatedFeels.push(submood5);
       }
 
-      const data = await axios.post('http://localhost:5000/playlist/recommendations', {
+      const data = await axios.post('https://smit3407-moodify-server.herokuapp.com/playlist/recommendations', {
         mood,
         associatedFeels,
         token: accessToken,
       });
 
-      const personalizedData = await axios.get(`http://localhost:5000/playlist/personal/${accessToken}?cm=${mood}`);
+      const personalizedData = await axios.get(`https://smit3407-moodify-server.herokuapp.com/playlist/personal/${accessToken}?cm=${mood}`);
       setPersonalizedSongs(personalizedData.data);
 
       const uris = data.data.map((item) => item.uri);
@@ -522,28 +522,28 @@ function Result() {
       console.log(genres);
       setGenre(genres);
 
-      const moodStatsData = await axios.get(`http://localhost:5000/user/statistics/${userData.data.id}`);
+      const moodStatsData = await axios.get(`https://smit3407-moodify-server.herokuapp.com/user/statistics/${userData.data.id}`);
       setMoodStatisticsData(moodStatsData.data);
 
-      let newName = await axios.post(`http://localhost:5000/playlist/generatetitle?coremood=${mood}`);
+      let newName = await axios.post(`https://smit3407-moodify-server.herokuapp.com/playlist/generatetitle?coremood=${mood}`);
       console.log(newName);
       newName = newName.data.split(' ').slice(1).join(' ');
 
       setName(newName);
       setPersName(newName);
 
-      let newImgLink = await axios.post(`http://localhost:5000/playlist/generateimg?text=${newName}`);
+      let newImgLink = await axios.post(`https://smit3407-moodify-server.herokuapp.com/playlist/generateimg?text=${newName}`);
       console.log(newImgLink.data);
 
       setImgLink(newImgLink.data);
       setPersImgLink(newImgLink.data);
 
-      newName = await axios.post(`http://localhost:5000/playlist/generatetitle?coremood=${mood}`);
+      newName = await axios.post(`https://smit3407-moodify-server.herokuapp.com/playlist/generatetitle?coremood=${mood}`);
       console.log(newName);
       newName = newName.data.split(' ').slice(1).join(' ');
       setCommName(newName);
 
-      newImgLink = await axios.post(`http://localhost:5000/playlist/generateimg?text=${newName}`);
+      newImgLink = await axios.post(`https://smit3407-moodify-server.herokuapp.com/playlist/generateimg?text=${newName}`);
       console.log(newImgLink.data);
       setCommImgLink(newImgLink.data);
     } catch (error) {

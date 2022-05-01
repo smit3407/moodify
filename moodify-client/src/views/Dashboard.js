@@ -22,9 +22,9 @@ function Dashboard() {
     if (window.location.hash === '' && Cookies.get('SpotifyAccessToken') === undefined) {
       return navigate('/');
     }
-    axios.get(`http://localhost:5000/user/${accessToken}`)
+    axios.get(`https://smit3407-moodify-server.herokuapp.com/user/${accessToken}`)
       .then((data) => {
-        axios.post(`http://localhost:5000/user/post?id=${data.data.id}`);
+        axios.post(`https://smit3407-moodify-server.herokuapp.com/user/post?id=${data.data.id}`);
       })
       .catch((err) => {
         console.log(err);
@@ -32,7 +32,7 @@ function Dashboard() {
   }, []);
 
   function postMood(mood) {
-    axios.post(`http://localhost:5000/user/update/mood?type=${mood}&token=${accessToken}`)
+    axios.post(`https://smit3407-moodify-server.herokuapp.com/user/update/mood?type=${mood}&token=${accessToken}`)
       .catch((err) => {
         console.log(err);
       });

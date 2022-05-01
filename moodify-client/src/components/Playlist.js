@@ -123,7 +123,7 @@ const Song = (props) => {
   );
 
   async function AddSongToPlaylist(playlistId) {
-    const data = await axios.post(`http://localhost:5000/playlist/add?playlist=${playlistId}&song=${id}&token=${accessToken}`);
+    const data = await axios.post(`https://smit3407-moodify-server.herokuapp.com/playlist/add?playlist=${playlistId}&song=${id}&token=${accessToken}`);
     console.log(data);
     if (data) {
       setShowAddSongAlert(true);
@@ -256,16 +256,16 @@ const Song = (props) => {
       setShowLikeAlert(true);
       console.log('accessToken in hearting');
       console.log(accessToken);
-      await axios.put(`http://localhost:5000/playlist/save?ids=${songId}&token=${accessToken}`);
+      await axios.put(`https://smit3407-moodify-server.herokuapp.com/playlist/save?ids=${songId}&token=${accessToken}`);
     } else if (heart === '/heart-green.svg') {
       setHeart('/heart-black.svg');
       setShowUnlikeAlert(true);
-      axios.delete(`http://localhost:5000/playlist/remove?ids=${songId}&token=${accessToken}`);
+      axios.delete(`https://smit3407-moodify-server.herokuapp.com/playlist/remove?ids=${songId}&token=${accessToken}`);
     }
   }
 
   async function SongCreditsClick(songTitle, artist) {
-    const data = await axios.get(`http://localhost:5000/song/get/credits?songTitle=${songTitle}&artist=${artist}`);
+    const data = await axios.get(`https://smit3407-moodify-server.herokuapp.com/song/get/credits?songTitle=${songTitle}&artist=${artist}`);
 
     const writtenBy = data.data.writtenBy.join(', ');
     const producedBy = data.data.producedBy.join(', ');
@@ -280,7 +280,7 @@ const Song = (props) => {
   async function GetUserPlaylists() {
     console.log('accessToken from GetUserPlaylists');
     console.log(accessToken);
-    const playlists = await axios.get(`http://localhost:5000/playlist/all?token=${accessToken}`);
+    const playlists = await axios.get(`https://smit3407-moodify-server.herokuapp.com/playlist/all?token=${accessToken}`);
     setUserPlaylist(playlists.data);
     console.log('user playlists');
     console.log(userPlaylist);
@@ -288,7 +288,7 @@ const Song = (props) => {
   }
 
   async function showSongLyrics() {
-    const data = await axios.get(`http://localhost:5000/song/lyrics/${artists[0].name}/${name}`);
+    const data = await axios.get(`https://smit3407-moodify-server.herokuapp.com/song/lyrics/${artists[0].name}/${name}`);
     console.log(data);
     console.log(data.data);
     const lineByLine = data.data.split('\n');
@@ -298,7 +298,7 @@ const Song = (props) => {
   }
 
   async function followArtist(artistId) {
-    await axios.put(`http://localhost:5000/user/follow/artist?id=${artistId}&token=${accessToken}`)
+    await axios.put(`https://smit3407-moodify-server.herokuapp.com/user/follow/artist?id=${artistId}&token=${accessToken}`)
       .then((data) => {
         console.log(data);
         setFollowArtistAlert(true);
@@ -312,7 +312,7 @@ const Song = (props) => {
   async function followAlbum() {
     const albumSplit = albumLink.split('/');
     const albumId = albumSplit[4];
-    await axios.put(`http://localhost:5000/user/follow/album?id=${albumId}&token=${accessToken}`)
+    await axios.put(`https://smit3407-moodify-server.herokuapp.com/user/follow/album?id=${albumId}&token=${accessToken}`)
       .then((data) => {
         console.log(data);
         setFollowAlbumAlert(true);
