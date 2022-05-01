@@ -1,2 +1,1 @@
-web: cd moodify-server
-web: npm start
+web: npm start --prefix moodify-server
