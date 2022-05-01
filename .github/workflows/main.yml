@@ -13,12 +13,11 @@ jobs:
     steps:
 
     - name: Build
+      working-directory: /moodify-client
       run: |
         touch .env
         echo REACT_APP_CLIENT_ID=${{ secrets.REACT_APP_CLIENT_ID }} >> .env
         echo REACT_APP_AUTHORIZE_URL=${{ secrets.REACT_APP_AUTHORIZE_URL }} >> .env
         echo REACT_APP_REDIRECT_URL=${{ secrets.REACT_APP_REDIRECT_URL }} >> .env
       run: npm run build
-        working-directory: /moodify-client
       run: npm run deploy
-        working-directory: /moodify-client
