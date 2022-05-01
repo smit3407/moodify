@@ -13,7 +13,7 @@ jobs:
     steps:
 
     - name: Build
-      working-directory: ./moodify-client
+      working-directory: moodify-client
       run: |
         touch .env
         echo REACT_APP_CLIENT_ID=${{ secrets.REACT_APP_CLIENT_ID }} >> .env
