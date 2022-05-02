@@ -17,7 +17,7 @@ function Login() {
 
   const REACT_APP_CLIENT_ID = 'f79f8a9b99344dda8c31b82e2ad7f63f';
   const REACT_APP_AUTHORIZE_URL = 'https://accounts.spotify.com/authorize';
-  const REACT_APP_REDIRECT_URL = 'https://voigniersmith.com/moodify/#/dashboard';
+  const REACT_APP_REDIRECT_URL = 'http://localhost:3000/%23/dashboard';
 
   const scopes = [
     'user-modify-playback-state',
