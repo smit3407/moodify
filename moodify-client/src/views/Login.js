@@ -15,11 +15,9 @@ function Login() {
     }
   });
 
-  const {
-    REACT_APP_CLIENT_ID,
-    REACT_APP_AUTHORIZE_URL,
-    REACT_APP_REDIRECT_URL,
-  } = process.env;
+  const REACT_APP_CLIENT_ID = '67bff51077a140489ce25be2b88f01b3';
+  const REACT_APP_AUTHORIZE_URL = 'https://accounts.spotify.com/authorize';
+  const REACT_APP_REDIRECT_URL = 'https://voigniersmith.com/moodify/dashboard';
 
   const scopes = [
     'user-modify-playback-state',
