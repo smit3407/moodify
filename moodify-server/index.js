@@ -13,7 +13,7 @@ mongoose.connect('mongodb+srv://moodify:teletubbies@cluster1.wlzag.mongodb.net/M
   .then(() => {
     const app = express();
     app.use(cors({
-      origin: 'https://voigniersmith.com'
+      origin: '*'
     }));
     app.use(bodyParser.json());
     // Enables express to parse body data from x-www-form-encoded data
