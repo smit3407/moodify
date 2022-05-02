@@ -35,9 +35,9 @@ jobs:
     - name: deploy
       working-directory: ./moodify-client
       run: |
-        git config --global user.name $user_name
+        git config --global user.name smit3
         git config --global user.email $user_email
-        git remote set-url origin https://${github_token}@github.com/${repository}
+        git remote set-url origin git@${github_token}@github.com/${repository}
         npm run deploy
       env:
         user_name: 'smit3407'
