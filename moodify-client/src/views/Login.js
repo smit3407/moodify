@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 import '../styles/login.css';
-import logo from '../../public/logo-white.png';
+import logo from '../images/logo-white.png';
 
 function Login() {
   const accessToken = Cookies.get('SpotifyAccessToken');
