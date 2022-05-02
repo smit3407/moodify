@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: setup git config
       working-directory: ./moodify-client
       run: |
@@ -35,12 +35,12 @@ jobs:
     - name: deploy
       working-directory: ./moodify-client
       run: |
-        git config --global user.name smit3
+        git config --global user.name $user_name
         git config --global user.email $user_email
-        git remote set-url origin git@${github_token}@github.com/${repository}
+        git remote set-url origin https://${github_token}@github.com/${repository}
         npm run deploy
-      env:
-        user_name: 'smit3407'
-        user_email: 'smit3407@purdue.edu'
+      with:
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
         github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
         repository: ${{ github.repository }}
