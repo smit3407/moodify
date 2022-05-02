@@ -27,7 +27,7 @@ mongoose.connect('mongodb+srv://moodify:teletubbies@cluster1.wlzag.mongodb.net/M
     app.use('/user', routeUser);
     app.use('/playlist', routePlaylist);
 
-    app.listen(port, () => {
+    app.listen(process.env.PORT || port, () => {
       console.log(`\nMoodify server listening on port ${port}`);
     });
   });
