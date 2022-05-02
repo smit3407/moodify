@@ -3,6 +3,7 @@ import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 import '../styles/login.css';
+import logo from '../../public/logo-white.png';
 
 function Login() {
   const accessToken = Cookies.get('SpotifyAccessToken');
@@ -50,7 +51,7 @@ function Login() {
             Moodify
           </div>
           <div>
-            <img src="/logo-white.png" alt="logo" className="logo" />
+            <img src={logo} alt="logo" className="logo" />
           </div>
           <div>
             <Button text="Log in with Spotify" onClick={authorizeSpotify} type="wide" color="green" />

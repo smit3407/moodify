@@ -4,7 +4,7 @@ import { Col, Row, Container } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import Button from '../components/Button';
-import logo from '../images/logo-circle.png';
+import logo from '../images/logo-white.png';
 
 function Dashboard() {
   const navigate = useNavigate();

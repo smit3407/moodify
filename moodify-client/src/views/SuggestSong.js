@@ -6,7 +6,7 @@ import {
 import { Link, useLocation } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import Button from '../components/Button';
-import logo from '../images/logo-circle.png';
+import logo from '../images/logo-white.png';
 import '../styles/playlist.css';
 
 function SuggestSong() {

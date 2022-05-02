@@ -8,7 +8,7 @@ import CustomButton from 'react-bootstrap/Button';
 import Cookies from 'js-cookie';
 import SpotifyPlayer from 'react-spotify-web-playback';
 import Button from '../components/Button';
-import logo from '../images/logo-circle.png';
+import logo from '../images/logo-white.png';
 import Playlist from '../components/Playlist';
 import Toggle from '../components/Toggle';
 import MoodStatistics from '../components/MoodStatistics';
