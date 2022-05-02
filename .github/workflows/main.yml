@@ -11,9 +11,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v1
     - name: Build
       run: |
-        cd ../moodfy-client
+        cd moodfy-client
         touch .env
         echo REACT_APP_CLIENT_ID=${{ secrets.REACT_APP_CLIENT_ID }} >> .env
         echo REACT_APP_AUTHORIZE_URL=${{ secrets.REACT_APP_AUTHORIZE_URL }} >> .env
