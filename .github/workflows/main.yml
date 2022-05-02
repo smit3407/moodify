@@ -12,21 +12,24 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-      working-directory: ./moodify-client
     - name: setup git config
+      working-directory: ./moodify-client
       run: |
         git config user.name "GitHub Actions Bot"
         git config user.email "<>"
     - name: install
+      working-directory: ./moodify-client
       run: |
         npm install
         touch .env
     - name: create env
+      working-directory: ./moodify-client
       run: |
         echo REACT_APP_CLIENT_ID=${{ secrets.REACT_APP_CLIENT_ID }} >> .env
         echo REACT_APP_AUTHORIZE_URL=${{ secrets.REACT_APP_AUTHORIZE_URL }} >> .env
         echo REACT_APP_REDIRECT_URL=${{ secrets.REACT_APP_REDIRECT_URL }} >> .env
     - name: build and deploy
+      working-directory: ./moodify-client
       run: |
         npm run build
         npm run deploy
