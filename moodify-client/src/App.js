@@ -18,7 +18,7 @@ import './styles/button.css';
 
 function App() {
   return (
-    <Router basename="https://voigniersmith.com/moodify">
+    <Router basename="/moodify">
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
