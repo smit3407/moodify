@@ -17,7 +17,7 @@ function Login() {
 
   const REACT_APP_CLIENT_ID = 'f79f8a9b99344dda8c31b82e2ad7f63f';
   const REACT_APP_AUTHORIZE_URL = 'https://accounts.spotify.com/authorize';
-  const REACT_APP_REDIRECT_URL = 'https://voigniersmith.com/moodify/dashboard';
+  const REACT_APP_REDIRECT_URL = 'https://voigniersmith.com/moodify/#/dashboard';
 
   const scopes = [
     'user-modify-playback-state',
@@ -38,7 +38,7 @@ function Login() {
   ];
 
   const authorizeSpotify = () => {
-    window.location.replace(`${REACT_APP_AUTHORIZE_URL}?client_id=${REACT_APP_CLIENT_ID}&redirect_uri=${REACT_APP_REDIRECT_URL}&scope=${scopes.join('%20')}&response_type=token&show_dialog=true`);
+    window.location.replace(`${REACT_APP_AUTHORIZE_URL}?client_id=${REACT_APP_CLIENT_ID}&response_type=token&redirect_uri=${REACT_APP_REDIRECT_URL}&scope=${scopes.join('%20')}&show_dialog=true`);
   };
 
   return (
