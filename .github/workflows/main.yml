@@ -34,7 +34,6 @@ jobs:
         npm run build
     - name: deploy
       uses: peaceiris/actions-gh-pages@v3
-      working-directory: './moodify-client'
       with:
         github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
         publish_dir: ./build
