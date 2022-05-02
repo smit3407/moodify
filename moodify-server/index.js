@@ -12,7 +12,9 @@ const routePlaylist = require('./routes/playlist');
 mongoose.connect('mongodb+srv://moodify:teletubbies@cluster1.wlzag.mongodb.net/Moodify?retryWrites=true&w=majority')
   .then(() => {
     const app = express();
-    app.use(cors());
+    app.use(cors({
+      origin: 'https://voigniersmith.com/moodify'
+    }));
     app.use(bodyParser.json());
     // Enables express to parse body data from x-www-form-encoded data
     // app.use(bodyParser.urlencoded({ extended: false }));
