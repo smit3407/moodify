@@ -12,8 +12,8 @@ jobs:
 
     steps:
     - name: Build
-      working-directory: ./moodify/moodify-client
       run: |
+        cd ../moodfy-client
         touch .env
         echo REACT_APP_CLIENT_ID=${{ secrets.REACT_APP_CLIENT_ID }} >> .env
         echo REACT_APP_AUTHORIZE_URL=${{ secrets.REACT_APP_AUTHORIZE_URL }} >> .env
