@@ -21,8 +21,6 @@ jobs:
       working-directory: ./moodify-client
       run: |
         npm ci
-    - name: create env
-      working-directory: ./moodify-client
     - name: build
       working-directory: ./moodify-client
       run: |
