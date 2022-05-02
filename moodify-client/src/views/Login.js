@@ -6,10 +6,17 @@ import '../styles/login.css';
 import logo from '../images/logo-white.png';
 
 function Login() {
-  const accessToken = Cookies.get('SpotifyAccessToken');
+  let accessToken = Cookies.get('SpotifyAccessToken');
   const navigate = useNavigate();
 
   React.useEffect(() => {
+    const { hash } = window.location;
+    if (typeof Cookies.get('SpotifyAccessToken') === 'undefined' && hash !== '') {
+      const accToken = hash.split('&')[0].split('=')[1];
+      const expiresIn = hash.split('&')[2].split('=')[1];
+      Cookies.set('SpotifyAccessToken', accToken, { expires: parseInt('0x', expiresIn) / 86400 });
+    }
+    accessToken = Cookies.get('SpotifyAccessToken');
     if (typeof accessToken !== 'undefined') {
       return navigate('/dashboard');
     }
@@ -17,7 +24,7 @@ function Login() {
 
   const REACT_APP_CLIENT_ID = 'f79f8a9b99344dda8c31b82e2ad7f63f';
   const REACT_APP_AUTHORIZE_URL = 'https://accounts.spotify.com/authorize';
-  const REACT_APP_REDIRECT_URL = 'http://localhost:3000/%23/dashboard';
+  const REACT_APP_REDIRECT_URL = 'http://localhost:3000';
 
   const scopes = [
     'user-modify-playback-state',
